@@ -532,7 +532,7 @@ export function NxWelcome({ title }: { title: string }) {
                 </svg>
               </a>
               <a
-                href="https://www.youtube.com/c/Nrwl_io/videos?utm_source=nx-project&sub_confirmation=1"
+                href="https://www.youtube.com/@NxDevtools/videos?utm_source=nx-project&sub_confirmation=1"
                 target="_blank"
                 rel="noreferrer"
                 className="list-item-link"
@@ -565,7 +565,7 @@ export function NxWelcome({ title }: { title: string }) {
                 </svg>
               </a>
               <a
-                href="https://nx.dev/react-tutorial/01-create-application?utm_source=nx-project"
+                href="https://nx.dev/react-tutorial/1-code-generation?utm_source=nx-project"
                 target="_blank"
                 rel="noreferrer"
                 className="list-item-link"

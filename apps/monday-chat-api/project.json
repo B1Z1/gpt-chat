@@ -1,0 +1,64 @@
+{
+  "name": "monday-chat-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/monday-chat-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/monday-chat-api",
+        "main": "apps/monday-chat-api/src/main.ts",
+        "tsConfig": "apps/monday-chat-api/tsconfig.app.json",
+        "assets": ["apps/monday-chat-api/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/monday-chat-api/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "monday-chat-api:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "monday-chat-api:build:development"
+        },
+        "production": {
+          "buildTarget": "monday-chat-api:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/monday-chat-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/monday-chat-api/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
