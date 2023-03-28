@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "monday-gpt": "apps/monday-gpt",
+    "monday-gpt-e2e": "apps/monday-gpt-e2e"
+  }
+}

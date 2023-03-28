@@ -1,0 +1,83 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/monday-gpt/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/monday-gpt",
+        "index": "apps/monday-gpt/src/index.html",
+        "baseHref": "/",
+        "main": "apps/monday-gpt/src/main.tsx",
+        "polyfills": "apps/monday-gpt/src/polyfills.ts",
+        "tsConfig": "apps/monday-gpt/tsconfig.app.json",
+        "assets": [
+          "apps/monday-gpt/src/favicon.ico",
+          "apps/monday-gpt/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/monday-gpt/src/environments/environment.ts",
+              "with": "apps/monday-gpt/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "monday-gpt:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "monday-gpt:build:development"
+        },
+        "production": {
+          "buildTarget": "monday-gpt:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/monday-gpt/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/monday-gpt"],
+      "options": {
+        "jestConfig": "apps/monday-gpt/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
